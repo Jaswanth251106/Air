@@ -1,0 +1,503 @@
+import { AIRPORTS_DATA } from "./airports";
+
+export interface LeadTimeFares {
+  "T+45": number;
+  "T+30": number;
+  "T+15": number;
+  "T+7": number;
+  "T+1": number;
+}
+
+export interface AirRoute {
+  routeId: string;
+  origin: string; // IATA code
+  destination: string; // IATA code
+  airline: string;
+  flightNumber: string;
+  sourceType: "Airline Direct" | "GDS" | "OTA";
+  cabin: "Economy" | "Premium Economy" | "Business";
+  bookingWindow: "T+1" | "T+7" | "T+15" | "T+30" | "T+45";
+  departureTime: string;
+  arrivalTime: string;
+  baseFare: number;
+  taxes: number;
+  totalFare: number;
+  availability: "Available" | "Limited" | "High Surge" | "Elevated";
+  nonstop: boolean;
+  routeColor: string;
+  fareSignal: "Stable" | "Elevated" | "High Surge" | "Unavailable";
+  leadTimeFares: LeadTimeFares;
+  observedDate: string;
+  distanceKm: number;
+  routeType: "domestic" | "international";
+}
+
+export const AIR_ROUTES_DATA: AirRoute[] = [
+  {
+    routeId: "R-BOM-CCU-01",
+    origin: "BOM",
+    destination: "CCU",
+    airline: "IndiGo",
+    flightNumber: "6E-324",
+    sourceType: "Airline Direct",
+    cabin: "Economy",
+    bookingWindow: "T+30",
+    departureTime: "08:40",
+    arrivalTime: "11:15",
+    baseFare: 5600,
+    taxes: 1100,
+    totalFare: 6700,
+    availability: "Available",
+    nonstop: true,
+    routeColor: "#0A5B9E",
+    fareSignal: "Stable",
+    leadTimeFares: {
+      "T+45": 6000,
+      "T+30": 6700,
+      "T+15": 7800,
+      "T+7": 9400,
+      "T+1": 12600,
+    },
+    observedDate: "2026-09-28",
+    distanceKm: 1660,
+    routeType: "domestic",
+  },
+  {
+    routeId: "R-MAA-DEL-01",
+    origin: "MAA",
+    destination: "DEL",
+    airline: "Air India",
+    flightNumber: "AI-540",
+    sourceType: "Airline Direct",
+    cabin: "Economy",
+    bookingWindow: "T+30",
+    departureTime: "06:10",
+    arrivalTime: "09:00",
+    baseFare: 5400,
+    taxes: 1020,
+    totalFare: 6420,
+    availability: "Available",
+    nonstop: true,
+    routeColor: "#0A5B9E",
+    fareSignal: "Stable",
+    leadTimeFares: {
+      "T+45": 5800,
+      "T+30": 6420,
+      "T+15": 7200,
+      "T+7": 8900,
+      "T+1": 11400,
+    },
+    observedDate: "2026-09-28",
+    distanceKm: 1760,
+    routeType: "domestic",
+  },
+  {
+    routeId: "R-MAA-DEL-02",
+    origin: "MAA",
+    destination: "DEL",
+    airline: "IndiGo",
+    flightNumber: "6E-2401",
+    sourceType: "OTA",
+    cabin: "Economy",
+    bookingWindow: "T+15",
+    departureTime: "14:20",
+    arrivalTime: "17:10",
+    baseFare: 6100,
+    taxes: 1100,
+    totalFare: 7200,
+    availability: "Elevated",
+    nonstop: true,
+    routeColor: "#0A5B9E",
+    fareSignal: "Elevated",
+    leadTimeFares: {
+      "T+45": 5700,
+      "T+30": 6300,
+      "T+15": 7200,
+      "T+7": 8800,
+      "T+1": 11800,
+    },
+    observedDate: "2026-09-28",
+    distanceKm: 1760,
+    routeType: "domestic",
+  },
+  {
+    routeId: "R-MAA-BOM-01",
+    origin: "MAA",
+    destination: "BOM",
+    airline: "IndiGo",
+    flightNumber: "6E-241",
+    sourceType: "Airline Direct",
+    cabin: "Economy",
+    bookingWindow: "T+30",
+    departureTime: "07:30",
+    arrivalTime: "09:25",
+    baseFare: 4900,
+    taxes: 950,
+    totalFare: 5850,
+    availability: "Available",
+    nonstop: true,
+    routeColor: "#568AB2",
+    fareSignal: "Stable",
+    leadTimeFares: {
+      "T+45": 5100,
+      "T+30": 5850,
+      "T+15": 6600,
+      "T+7": 7900,
+      "T+1": 10200,
+    },
+    observedDate: "2026-09-28",
+    distanceKm: 1030,
+    routeType: "domestic",
+  },
+  {
+    routeId: "R-MAA-BLR-01",
+    origin: "MAA",
+    destination: "BLR",
+    airline: "IndiGo",
+    flightNumber: "6E-412",
+    sourceType: "GDS",
+    cabin: "Economy",
+    bookingWindow: "T+30",
+    departureTime: "08:15",
+    arrivalTime: "09:15",
+    baseFare: 2600,
+    taxes: 600,
+    totalFare: 3200,
+    availability: "Available",
+    nonstop: true,
+    routeColor: "#4EB050",
+    fareSignal: "Stable",
+    leadTimeFares: {
+      "T+45": 2900,
+      "T+30": 3200,
+      "T+15": 3800,
+      "T+7": 4900,
+      "T+1": 6400,
+    },
+    observedDate: "2026-09-28",
+    distanceKm: 290,
+    routeType: "domestic",
+  },
+  {
+    routeId: "R-DEL-BOM-01",
+    origin: "DEL",
+    destination: "BOM",
+    airline: "Air India",
+    flightNumber: "AI-102",
+    sourceType: "Airline Direct",
+    cabin: "Economy",
+    bookingWindow: "T+30",
+    departureTime: "09:00",
+    arrivalTime: "11:10",
+    baseFare: 5100,
+    taxes: 1000,
+    totalFare: 6100,
+    availability: "Available",
+    nonstop: true,
+    routeColor: "#0A5B9E",
+    fareSignal: "Stable",
+    leadTimeFares: {
+      "T+45": 5400,
+      "T+30": 6100,
+      "T+15": 7100,
+      "T+7": 8900,
+      "T+1": 12100,
+    },
+    observedDate: "2026-09-28",
+    distanceKm: 1140,
+    routeType: "domestic",
+  },
+  {
+    routeId: "R-DEL-HYD-01",
+    origin: "DEL",
+    destination: "HYD",
+    airline: "Vistara",
+    flightNumber: "UK-871",
+    sourceType: "OTA",
+    cabin: "Premium Economy",
+    bookingWindow: "T+30",
+    departureTime: "11:30",
+    arrivalTime: "13:45",
+    baseFare: 4500,
+    taxes: 900,
+    totalFare: 5400,
+    availability: "Available",
+    nonstop: true,
+    routeColor: "#6F498E",
+    fareSignal: "Stable",
+    leadTimeFares: {
+      "T+45": 4800,
+      "T+30": 5400,
+      "T+15": 6300,
+      "T+7": 7800,
+      "T+1": 9800,
+    },
+    observedDate: "2026-09-28",
+    distanceKm: 1260,
+    routeType: "domestic",
+  },
+  {
+    routeId: "R-DEL-BLR-01",
+    origin: "DEL",
+    destination: "BLR",
+    airline: "IndiGo",
+    flightNumber: "6E-205",
+    sourceType: "Airline Direct",
+    cabin: "Economy",
+    bookingWindow: "T+30",
+    departureTime: "06:45",
+    arrivalTime: "09:30",
+    baseFare: 4950,
+    taxes: 950,
+    totalFare: 5900,
+    availability: "Available",
+    nonstop: true,
+    routeColor: "#0A5B9E",
+    fareSignal: "Stable",
+    leadTimeFares: {
+      "T+45": 5200,
+      "T+30": 5900,
+      "T+15": 6800,
+      "T+7": 8400,
+      "T+1": 11200,
+    },
+    observedDate: "2026-09-28",
+    distanceKm: 1740,
+    routeType: "domestic",
+  },
+  {
+    routeId: "R-BOM-BLR-01",
+    origin: "BOM",
+    destination: "BLR",
+    airline: "Akasa Air",
+    flightNumber: "QP-1102",
+    sourceType: "Airline Direct",
+    cabin: "Economy",
+    bookingWindow: "T+30",
+    departureTime: "10:15",
+    arrivalTime: "11:50",
+    baseFare: 3400,
+    taxes: 700,
+    totalFare: 4100,
+    availability: "Available",
+    nonstop: true,
+    routeColor: "#F3AC27",
+    fareSignal: "Stable",
+    leadTimeFares: {
+      "T+45": 3600,
+      "T+30": 4100,
+      "T+15": 4900,
+      "T+7": 5900,
+      "T+1": 7800,
+    },
+    observedDate: "2026-09-28",
+    distanceKm: 840,
+    routeType: "domestic",
+  },
+  {
+    routeId: "R-MAA-SIN-01",
+    origin: "MAA",
+    destination: "SIN",
+    airline: "Singapore Airlines",
+    flightNumber: "SQ-529",
+    sourceType: "GDS",
+    cabin: "Economy",
+    bookingWindow: "T+30",
+    departureTime: "23:15",
+    arrivalTime: "06:00",
+    baseFare: 15600,
+    taxes: 2900,
+    totalFare: 18500,
+    availability: "Available",
+    nonstop: true,
+    routeColor: "#568AB2",
+    fareSignal: "Stable",
+    leadTimeFares: {
+      "T+45": 16900,
+      "T+30": 18500,
+      "T+15": 21400,
+      "T+7": 26800,
+      "T+1": 34500,
+    },
+    observedDate: "2026-09-28",
+    distanceKm: 2920,
+    routeType: "international",
+  },
+  {
+    routeId: "R-DEL-DXB-01",
+    origin: "DEL",
+    destination: "DXB",
+    airline: "Emirates",
+    flightNumber: "EK-513",
+    sourceType: "Airline Direct",
+    cabin: "Economy",
+    bookingWindow: "T+30",
+    departureTime: "04:15",
+    arrivalTime: "06:20",
+    baseFare: 18900,
+    taxes: 3500,
+    totalFare: 22400,
+    availability: "Elevated",
+    nonstop: true,
+    routeColor: "#E63946",
+    fareSignal: "Elevated",
+    leadTimeFares: {
+      "T+45": 20100,
+      "T+30": 22400,
+      "T+15": 25800,
+      "T+7": 31200,
+      "T+1": 39800,
+    },
+    observedDate: "2026-09-28",
+    distanceKm: 2180,
+    routeType: "international",
+  },
+  {
+    routeId: "R-MAA-PEK-01",
+    origin: "MAA",
+    destination: "PEK",
+    airline: "China Southern",
+    flightNumber: "CZ-3048",
+    sourceType: "OTA",
+    cabin: "Economy",
+    bookingWindow: "T+30",
+    departureTime: "01:20",
+    arrivalTime: "10:45",
+    baseFare: 29800,
+    taxes: 4400,
+    totalFare: 34200,
+    availability: "Available",
+    nonstop: false,
+    routeColor: "#6F498E",
+    fareSignal: "Stable",
+    leadTimeFares: {
+      "T+45": 31000,
+      "T+30": 34200,
+      "T+15": 39500,
+      "T+7": 46800,
+      "T+1": 58900,
+    },
+    observedDate: "2026-09-28",
+    distanceKm: 4200,
+    routeType: "international",
+  },
+  {
+    routeId: "R-CCU-DEL-01",
+    origin: "CCU",
+    destination: "DEL",
+    airline: "Air India",
+    flightNumber: "AI-763",
+    sourceType: "Airline Direct",
+    cabin: "Economy",
+    bookingWindow: "T+30",
+    departureTime: "07:00",
+    arrivalTime: "09:20",
+    baseFare: 4400,
+    taxes: 900,
+    totalFare: 5300,
+    availability: "Available",
+    nonstop: true,
+    routeColor: "#0A5B9E",
+    fareSignal: "Stable",
+    leadTimeFares: {
+      "T+45": 4700,
+      "T+30": 5300,
+      "T+15": 6100,
+      "T+7": 7500,
+      "T+1": 9800,
+    },
+    observedDate: "2026-09-28",
+    distanceKm: 1300,
+    routeType: "domestic",
+  },
+  {
+    routeId: "R-BLR-PNQ-01",
+    origin: "BLR",
+    destination: "PNQ",
+    airline: "IndiGo",
+    flightNumber: "6E-356",
+    sourceType: "Airline Direct",
+    cabin: "Economy",
+    bookingWindow: "T+30",
+    departureTime: "11:10",
+    arrivalTime: "12:35",
+    baseFare: 3100,
+    taxes: 650,
+    totalFare: 3750,
+    availability: "Available",
+    nonstop: true,
+    routeColor: "#0A5B9E",
+    fareSignal: "Stable",
+    leadTimeFares: {
+      "T+45": 3300,
+      "T+30": 3750,
+      "T+15": 4300,
+      "T+7": 5200,
+      "T+1": 6900,
+    },
+    observedDate: "2026-09-28",
+    distanceKm: 730,
+    routeType: "domestic",
+  },
+];
+
+export function getRoutesByOrigin(originCode: string): AirRoute[] {
+  return AIR_ROUTES_DATA.filter((r) => r.origin.toUpperCase() === originCode.toUpperCase());
+}
+
+export function getRouteByOriginAndDestination(origin: string, destination: string): AirRoute | undefined {
+  return AIR_ROUTES_DATA.find(
+    (r) => r.origin.toUpperCase() === origin.toUpperCase() && r.destination.toUpperCase() === destination.toUpperCase()
+  );
+}
+
+export function getOrCreateRoute(origin: string, destination: string): AirRoute {
+  const existing = getRouteByOriginAndDestination(origin, destination);
+  if (existing) return existing;
+
+  const orig = AIRPORTS_DATA.find((a) => a.iata.toUpperCase() === origin.toUpperCase() || a.code?.toUpperCase() === origin.toUpperCase());
+  const dest = AIRPORTS_DATA.find((a) => a.iata.toUpperCase() === destination.toUpperCase() || a.code?.toUpperCase() === destination.toUpperCase());
+
+  const origLat = orig?.latitude || orig?.lat || 19.0896;
+  const origLng = orig?.longitude || orig?.lng || 72.8656;
+  const destLat = dest?.latitude || dest?.lat || 22.6547;
+  const destLng = dest?.longitude || dest?.lng || 88.4467;
+
+  const dist = Math.round(
+    Math.sqrt(Math.pow((destLat - origLat) * 111, 2) + Math.pow((destLng - origLng) * 111, 2))
+  );
+
+  const baseFare = Math.max(2800, Math.round(dist * 3.4 + 1500));
+  const taxes = Math.round(baseFare * 0.18);
+  const totalFare = baseFare + taxes;
+
+  return {
+    routeId: `R-${origin.toUpperCase()}-${destination.toUpperCase()}-01`,
+    origin: origin.toUpperCase(),
+    destination: destination.toUpperCase(),
+    airline: "IndiGo",
+    flightNumber: "6E-548",
+    sourceType: "Airline Direct",
+    cabin: "Economy",
+    bookingWindow: "T+30",
+    departureTime: "09:15",
+    arrivalTime: "11:45",
+    baseFare: baseFare,
+    taxes: taxes,
+    totalFare: totalFare,
+    availability: "Available",
+    nonstop: true,
+    routeColor: "#0A5B9E",
+    fareSignal: "Stable",
+    leadTimeFares: {
+      "T+45": Math.round(totalFare * 0.9),
+      "T+30": totalFare,
+      "T+15": Math.round(totalFare * 1.15),
+      "T+7": Math.round(totalFare * 1.35),
+      "T+1": Math.round(totalFare * 1.7),
+    },
+    observedDate: "2026-09-28",
+    distanceKm: dist,
+    routeType: orig?.country !== dest?.country ? "international" : "domestic",
+  };
+}
